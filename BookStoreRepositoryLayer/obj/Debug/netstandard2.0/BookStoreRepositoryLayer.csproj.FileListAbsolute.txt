@@ -1,0 +1,12 @@
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\bin\Debug\netstandard2.0\BookStoreRepositoryLayer.deps.json
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\bin\Debug\netstandard2.0\BookStoreRepositoryLayer.dll
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\bin\Debug\netstandard2.0\BookStoreRepositoryLayer.pdb
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\bin\Debug\netstandard2.0\BookStoreModelLayer.dll
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\bin\Debug\netstandard2.0\BookStoreModelLayer.pdb
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\obj\Debug\netstandard2.0\BookStoreRepositoryLayer.csprojAssemblyReference.cache
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\obj\Debug\netstandard2.0\BookStoreRepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\obj\Debug\netstandard2.0\BookStoreRepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\obj\Debug\netstandard2.0\BookStoreRepositoryLayer.AssemblyInfo.cs
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\obj\Debug\netstandard2.0\BookStoreRepositoryLayer.csproj.CopyComplete
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\obj\Debug\netstandard2.0\BookStoreRepositoryLayer.dll
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreRepositoryLayer\obj\Debug\netstandard2.0\BookStoreRepositoryLayer.pdb
