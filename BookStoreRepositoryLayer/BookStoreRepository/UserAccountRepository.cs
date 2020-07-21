@@ -18,7 +18,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             this.configuration = configuration;
         }
 
-        public object AddUserDetails(User user)
+        public object AddUserDetails(UserRegistration user)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -39,7 +39,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
 
         public object ResetPassword(string email)
         {
-            User user = new User();
+            UserLogin user = new UserLogin();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("spResetPassword", con);
@@ -56,31 +56,25 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
-        public object UserLogin(string Email, string Password)
+        public UserLogin Login(UserLogin login)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(this.connectionString))
             {
                 SqlCommand cmd = new SqlCommand("spLogin", con);
-
                 cmd.CommandType = CommandType.StoredProcedure;
-                int count = 0;
+                cmd.Parameters.AddWithValue("@Email", login.Email);
+                cmd.Parameters.AddWithValue("@Password", login.Password);
                 con.Open();
-                cmd.Parameters.AddWithValue("@Email", Email);
-                cmd.Parameters.AddWithValue("@Password", Password);
-                SqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
+                using (SqlDataReader sdr = cmd.ExecuteReader())
                 {
-                    Email = rdr["Email"].ToString();
-                    Password = rdr["Password"].ToString();
-                    count++;
+                    if (sdr.HasRows)
+                    {
+                        con.Close();
+                        return login;
+                    }
                 }
                 con.Close();
-                if (count >= 1)
-                {
-                    return "Login in done successfully.";
-                }
-                return "Please check your email and password";
+                return null;
             }
         }
     }

@@ -12,14 +12,14 @@ namespace BookStoreManagerLayer.IBookStoreManager
         /// </summary>
         /// <param name="registration"></param>
         /// <returns></returns>
-        object AddUserDetails(User user);
+        object AddUserDetails(UserRegistration user);
 
         /// <summary>
         /// Login for User
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
-        Object UserLogin(string email,string password);
+        UserLogin Login(UserLogin login);
 
         /// <summary>
         /// Resetpassword for User

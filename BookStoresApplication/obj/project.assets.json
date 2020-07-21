@@ -2609,6 +2609,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.OpenApi/1.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.CodeGeneration/2.1.10": {
         "type": "package",
         "dependencies": {
@@ -3011,6 +3020,49 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "Scrutor/2.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "Microsoft.Extensions.DependencyModel": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/Scrutor.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Scrutor.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.Annotations/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Annotations.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.Filters/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "1.1.0",
+          "NETStandard.Library": "1.6.1",
+          "Scrutor": "2.2.2",
+          "Swashbuckle.AspNetCore.Annotations": "3.0.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Filters.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Filters.dll": {}
         }
       },
       "Swashbuckle.AspNetCore.Swagger/4.0.1": {
@@ -7307,6 +7359,23 @@
         "version.txt"
       ]
     },
+    "Microsoft.OpenApi/1.2.2": {
+      "sha512": "+diTWkzj9OSDKhZj56sUKu0F4N4yAu5j1pRSn3/2D8sD2gQcUyEncbDbqhe6SfRlZut2QytyH8zoaexrd1fKYw==",
+      "type": "package",
+      "path": "microsoft.openapi/1.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/Microsoft.OpenApi.dll",
+        "lib/net46/Microsoft.OpenApi.pdb",
+        "lib/net46/Microsoft.OpenApi.xml",
+        "lib/netstandard2.0/Microsoft.OpenApi.dll",
+        "lib/netstandard2.0/Microsoft.OpenApi.pdb",
+        "lib/netstandard2.0/Microsoft.OpenApi.xml",
+        "microsoft.openapi.1.2.2.nupkg.sha512",
+        "microsoft.openapi.nuspec"
+      ]
+    },
     "Microsoft.VisualStudio.Web.CodeGeneration/2.1.10": {
       "sha512": "HCIqKUjVJiq5PN2vngvVz8e4/GLl1gqUwdUXPObF4xAQUTdlutfA8OTcjaIEF1YzAR95tbzCAwD15L3d6LLhrQ==",
       "type": "package",
@@ -8114,6 +8183,51 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Scrutor/2.2.2": {
+      "sha512": "SpBBcc2gzanu3P4PlvQxnWzGQHXDVIPRWZ9gBjELWVjgIewztthJNCo/acF3+ytsW7Z/8S4+VFpqrVMfRPDyfA==",
+      "type": "package",
+      "path": "scrutor/2.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/Scrutor.dll",
+        "lib/net451/Scrutor.xml",
+        "lib/netstandard1.0/Scrutor.dll",
+        "lib/netstandard1.0/Scrutor.xml",
+        "lib/netstandard1.6/Scrutor.dll",
+        "lib/netstandard1.6/Scrutor.xml",
+        "scrutor.2.2.2.nupkg.sha512",
+        "scrutor.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Annotations/3.0.0": {
+      "sha512": "zDMXGLZX8/I5cGzU2KLfmrRHlvQ+gfHUeoHp/lk9Arn665F4qEnCRYlpjX3IrK40bRey6CNbi6n/k71bIN5ajA==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.annotations/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/net451/Swashbuckle.AspNetCore.Annotations.xml",
+        "lib/netstandard1.6/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/netstandard1.6/Swashbuckle.AspNetCore.Annotations.xml",
+        "swashbuckle.aspnetcore.annotations.3.0.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.annotations.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Filters/4.0.1": {
+      "sha512": "4G5cqya2j7sAqX5aGT7fpOKUUfLC16+D9RBWkOqTwVoeyyd8pAUjMf/g5g1fW7ByexLTCkhHvHfUkJ/BS46Zlw==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.filters/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/Swashbuckle.AspNetCore.Filters.dll",
+        "lib/netstandard1.6/Swashbuckle.AspNetCore.Filters.dll",
+        "swashbuckle.aspnetcore.filters.4.0.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.filters.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore.Swagger/4.0.1": {
@@ -12788,7 +12902,9 @@
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
+      "Microsoft.OpenApi >= 1.2.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.10",
+      "Swashbuckle.AspNetCore.Filters >= 4.0.1",
       "Swashbuckle.AspNetCore.Swagger >= 4.0.1",
       "Swashbuckle.AspNetCore.SwaggerGen >= 4.0.1",
       "Swashbuckle.AspNetCore.SwaggerUi >= 4.0.1"
@@ -12855,9 +12971,17 @@
             "version": "[2.1.0, )",
             "autoReferenced": true
           },
+          "Microsoft.OpenApi": {
+            "target": "Package",
+            "version": "[1.2.2, )"
+          },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.1.10, )"
+          },
+          "Swashbuckle.AspNetCore.Filters": {
+            "target": "Package",
+            "version": "[4.0.1, )"
           },
           "Swashbuckle.AspNetCore.Swagger": {
             "target": "Package",

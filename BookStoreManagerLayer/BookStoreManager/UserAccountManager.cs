@@ -16,7 +16,7 @@ namespace BookStoreManagerLayer.BookStoreManager
             this.userAccountRepository = userAccountRepository;
         }
 
-        public object AddUserDetails(User user)
+        public object AddUserDetails(UserRegistration user)
         {
             return this.userAccountRepository.AddUserDetails(user);
         }
@@ -26,9 +26,9 @@ namespace BookStoreManagerLayer.BookStoreManager
             return this.userAccountRepository.ResetPassword(email);
         }
 
-        public object UserLogin(string email,string password)
+        public UserLogin Login(UserLogin login)
         {
-            return this.userAccountRepository.UserLogin(email,password);
+            return this.userAccountRepository.Login(login);
         }
     }
 }

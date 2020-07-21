@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using BookStoreManagerLayer.BookStoreManager;
 using BookStoreManagerLayer.IBookStoreManager;
 using BookStoreRepositoryLayer.BookStoreRepository;
 using BookStoreRepositoryLayer.IBookStoreRepository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace BookStoresApplication
@@ -30,10 +35,34 @@ namespace BookStoresApplication
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<IUserAccountManager, UserAccountManager>();
             services.AddTransient<IUserAccountRepository, UserAccountRepository>();
-            services.AddSwaggerGen(c =>
+            ///****************
+            ////Adding the Swagger
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "BookStoreApplication", Version = "v1" });
+                options.SwaggerDoc("V2", new Swashbuckle.AspNetCore.Swagger.Info { Title = "BookStoreApplication", Version = "V2" });
+
+                //// this service handles the jwt token suppying in headers
+                options.AddSecurityDefinition("oauth2", new ApiKeyScheme
+                {
+                    Description = "Using the jwt bearer token",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+                options.OperationFilter<SecurityRequirementsOperationFilter>();
             });
+        ///*******************
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+              .AddJwtBearer(options =>
+              {
+                  var serverSecret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]));
+                  options.TokenValidationParameters = new TokenValidationParameters
+                  {
+                      IssuerSigningKey = serverSecret,
+                      ValidIssuer = Configuration["JWT:Issuer"],
+                      ValidAudience = Configuration["JWT:Audience"]
+                  };
+              });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,17 +71,21 @@ namespace BookStoresApplication
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookStoreApplication v1");
-                });
+                
             }
             else
             {
                 app.UseHsts();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/V2/Swagger.json", "BookStoreApplicationv2");
+                c.RoutePrefix = "";
+            });
+            
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseDefaultFiles();
             app.UseHttpsRedirection();
             app.UseMvcWithDefaultRoute();

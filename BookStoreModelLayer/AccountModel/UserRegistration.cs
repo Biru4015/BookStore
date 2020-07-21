@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BookStoreModelLayer.AccountModel
 {
-    public class User
+    public class UserRegistration
     {
         public int UserId { get; set; }
 

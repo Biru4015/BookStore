@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JVMpmC0xyi0EraqaJS9rEAh1Oi0UTiKHXdjBi1icW4Yp8ZYjTrLg3P+Jf5uYJ+1k6J3lJlkmDNL/ooyiMoPgzQ==",
+  "dgSpecHash": "rE3wmoGyFmYz2JGNuCGEwTiWG3vIjeEVS9gMHYTmT1q2uLjA5XxtL5V/s+wuQmg38lvn/473B4FlIj3kU5X4yw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Birendra Kumar\\source\\repos\\BookStoresApplication\\BookStoresApplication\\BookStoresApplication.csproj",
   "expectedPackageFiles": [
@@ -170,6 +170,7 @@
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.0\\microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.netcore.targets\\2.1.0\\microsoft.netcore.targets.2.1.0.nupkg.sha512",
+    "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.openapi\\1.2.2\\microsoft.openapi.1.2.2.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\2.1.10\\microsoft.visualstudio.web.codegeneration.2.1.10.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\2.1.10\\microsoft.visualstudio.web.codegeneration.contracts.2.1.10.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\2.1.10\\microsoft.visualstudio.web.codegeneration.core.2.1.10.nupkg.sha512",
@@ -204,6 +205,9 @@
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Birendra Kumar\\.nuget\\packages\\scrutor\\2.2.2\\scrutor.2.2.2.nupkg.sha512",
+    "C:\\Users\\Birendra Kumar\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\3.0.0\\swashbuckle.aspnetcore.annotations.3.0.0.nupkg.sha512",
+    "C:\\Users\\Birendra Kumar\\.nuget\\packages\\swashbuckle.aspnetcore.filters\\4.0.1\\swashbuckle.aspnetcore.filters.4.0.1.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\4.0.1\\swashbuckle.aspnetcore.swagger.4.0.1.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\4.0.1\\swashbuckle.aspnetcore.swaggergen.4.0.1.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\4.0.1\\swashbuckle.aspnetcore.swaggerui.4.0.1.nupkg.sha512",

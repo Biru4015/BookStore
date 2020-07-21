@@ -258,9 +258,17 @@
               "version": "[2.1.0, )",
               "autoReferenced": true
             },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.2.2, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.1.10, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[4.0.1, )"
             },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",

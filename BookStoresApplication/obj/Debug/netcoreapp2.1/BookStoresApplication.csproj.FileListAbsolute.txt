@@ -11,7 +11,6 @@ C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\bin\Debug\netcoreapp2.1\BookStoreRepositoryLayer.pdb
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\bin\Debug\netcoreapp2.1\BookStoreModelLayer.pdb
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.csprojAssemblyReference.cache
-C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.csproj.CoreCompileInputs.cache
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.RazorAssemblyInfo.cache
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.RazorAssemblyInfo.cs
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.AssemblyInfoInputs.cache
@@ -21,3 +20,5 @@ C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.dll
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.pdb
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.genruntimeconfig.cache
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\obj\Debug\netcoreapp2.1\BookStoresApplication.csproj.CoreCompileInputs.cache
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoresApplication\bin\Debug\netcoreapp2.1\appsettings.json
