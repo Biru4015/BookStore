@@ -11,7 +11,7 @@ namespace BookStoreRepositoryLayer.IBookStoreRepository
 
         List<BooksDetail> GetAllBooksDetails();
 
-        object DeleteBookDetailsByBookId(int bookId);
+        bool DeleteBookDetailsByBookId(int bookId);
 
         object GetBookDetailsByBookId(int bookId);
     }

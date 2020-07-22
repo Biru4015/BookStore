@@ -11,7 +11,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
 {
     public class BookStoreDetailsRepository : IBookStoreDetailsRepository
     {
-        string connectionString = (@"Server=(localdb)\\MSSQLLocalDB;Database=BookStore;Trusted_Connection=True");
+        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BookStore;Trusted_Connection=True";
         private readonly IConfiguration configuration;
         public BookStoreDetailsRepository(IConfiguration configuration)
         {
@@ -36,7 +36,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                 con.Open();
                 int i = cmd.ExecuteNonQuery();
                 con.Close();
-                return "registration done successfully.";
+                return "successfully added book details.";
             }
         }
 
@@ -72,7 +72,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             List<BooksDetail> bookstorelist = new List<BooksDetail>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("spGetAllBookDetails", connection);
+                SqlCommand command = new SqlCommand("spGetBookDetailsByBookId", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@BookId", bookId);
                 connection.Open();
@@ -92,20 +92,34 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                 }
                 connection.Close();
             }
-            return bookstorelist;
+            if (bookstorelist.Capacity >=1)
+                return bookstorelist;
+            return null;
         }
 
-        public object DeleteBookDetailsByBookId(int bookId)
+        public bool DeleteBookDetailsByBookId(int bookId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("spDeleteBookDetails", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@BookId", bookId);
+                SqlCommand cmd = new SqlCommand("spSelectBookId", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Email", bookId);
                 connection.Open();
-                command.ExecuteNonQuery();
+                using (SqlDataReader sdr = cmd.ExecuteReader())
+                {
+                    if (sdr.HasRows)
+                    {
+                        SqlCommand command = new SqlCommand("spDeleteBookDetails", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@BookId", bookId);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                        return true;
+                    }
+                }
                 connection.Close();
-                return "Deleted successfully bookId.";
+                return false;
             }
         }
     }

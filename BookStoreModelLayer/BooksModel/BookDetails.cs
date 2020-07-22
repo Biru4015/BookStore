@@ -15,7 +15,6 @@ namespace BookStoreModelLayer.BooksModel
         public string BookName { get; set; }
 
         [Required(ErrorMessage = "Please Enter Valid Author Name")]
-        [RegularExpression(@"^[A-Z][a-zA-Z]*$")]
         public string AuthorName { get; set; }
 
         [Required(ErrorMessage = "Please Enter Valid Price")]

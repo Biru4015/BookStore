@@ -25,7 +25,7 @@ namespace BookStoresApplication.Controllers
             this.manager = manager;
         }
 
-        [Authorize]
+       
         [HttpPost]
         public IActionResult AddBookDetails(BooksDetail booksDetail)
         {
@@ -47,7 +47,7 @@ namespace BookStoresApplication.Controllers
             }
         }
 
-        [Authorize]
+       
         [HttpGet]
         public IActionResult GetAllBooksDetails()
         {
@@ -69,7 +69,6 @@ namespace BookStoresApplication.Controllers
             }
         }
 
-        [Authorize]
         [HttpGet]
         [Route("SearchBookByBookId")]
         public IActionResult GetBookDetailsByBookId(int bookId)
@@ -78,7 +77,7 @@ namespace BookStoresApplication.Controllers
             var result = this.manager.GetBookDetailsByBookId(bookId);
             try
             {
-                if (!result.Equals(null))
+                if (result !=null)
                 {
                     message = "Successful";
                     return this.Ok(new { message, result });
@@ -92,18 +91,16 @@ namespace BookStoresApplication.Controllers
             }
         }
 
-        [Authorize]
         [HttpDelete]
         public IActionResult DeleteBookDetailsByBookId(int bookId)
         {
-            string message;
-            var result = this.manager.DeleteBookDetailsByBookId(bookId);
+            string message;  
             try
             {
-                if (!result.Equals(null))
+                if (this.manager.DeleteBookDetailsByBookId(bookId))
                 {
                     message = "Successful";
-                    return this.Ok(new { message, result });
+                    return this.Ok(new { message});
                 }
                 message = "Book id is not match with our database.Please give correct book id.";
                 return BadRequest(new { message });

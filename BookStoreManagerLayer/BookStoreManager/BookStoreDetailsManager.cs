@@ -26,7 +26,7 @@ namespace BookStoreManagerLayer.BookStoreManager
             return this.detailsRepository.GetAllBooksDetails();
         }
 
-        public object DeleteBookDetailsByBookId(int bookId)
+        public bool DeleteBookDetailsByBookId(int bookId)
         {
             return this.detailsRepository.DeleteBookDetailsByBookId(bookId);
         }
