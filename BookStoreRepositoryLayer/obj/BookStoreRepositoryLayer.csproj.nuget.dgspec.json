@@ -113,11 +113,19 @@
               "target": "Package",
               "version": "[2.1.1, )"
             },
+            "Microsoft.Extensions.Caching.Redis": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.1.58, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
