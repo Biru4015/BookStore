@@ -4,34 +4,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookStoreManagerLayer.IBookStoreManager;
 using BookStoreModelLayer;
-using BookStoreModelLayer.BooksModel;
-using Microsoft.AspNetCore.Authorization;
+using BookStoreModelLayer.CartModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace BookStoresApplication.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class BookStoreController : ControllerBase
+    public class CartController : ControllerBase
     {
-        public IBookStoreDetailsManager manager;
+        public IBookCartManager manager;
         private readonly IConfiguration config;
 
-        public BookStoreController(IBookStoreDetailsManager manager, IConfiguration config)
+        public CartController(IBookCartManager manager, IConfiguration config)
         {
             this.config = config;
             this.manager = manager;
         }
-
-       
         [HttpPost]
-        public IActionResult AddBookDetails(BooksDetail booksDetail)
+        public IActionResult AddCartDetails(Cart cart)
         {
             string message;
-            var result = this.manager.AddBookDetails(booksDetail);
+            var result = this.manager.AddCartDetails(cart);
             try
             {
                 if (!result.Equals(null))
@@ -48,12 +44,11 @@ namespace BookStoresApplication.Controllers
             }
         }
 
-       
         [HttpGet]
-        public IActionResult GetAllBooksDetails()
+        public IActionResult GetAllBooksFromCart(string Email)
         {
             string message;
-            var result = this.manager.GetAllBooksDetails();
+            var result = this.manager.GetAllBooksFromCart(Email);
             try
             {
                 if (!result.Equals(null))
@@ -61,29 +56,7 @@ namespace BookStoresApplication.Controllers
                     message = "Successful";
                     return this.Ok(new { message, result });
                 }
-                message = "Something went wrong please try again!!";
-                return BadRequest(new { message });
-            }
-            catch (CustomException)
-            {
-                return BadRequest(CustomException.ExceptionType.OPTIONS_NOT_MATCH);
-            }
-        }
-
-        [HttpGet]
-        [Route("SearchBookByBookId/{bookId}")]
-        public IActionResult GetBookDetailsByBookId(int bookId)
-        {
-            string message;
-            var result = this.manager.GetBookDetailsByBookId(bookId);
-            try
-            {
-                if (result !=null)
-                {
-                    message = "Successful";
-                    return this.Ok(new { message, result });
-                }
-                message = "Book id is not match with our database.Please give correct book id.";
+                message = "Please enter correct email,and retry!!";
                 return BadRequest(new { message });
             }
             catch (CustomException)
@@ -93,17 +66,17 @@ namespace BookStoresApplication.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteBookDetailsByBookId(int bookId)
+        public IActionResult DeleteCartDetailsByCartId(int cartId)
         {
-            string message;  
+            string message;
             try
             {
-                if (this.manager.DeleteBookDetailsByBookId(bookId))
+                if (this.manager.DeleteCartDetailsByCartId(cartId))
                 {
                     message = "Successful";
-                    return this.Ok(new { message});
+                    return this.Ok(new { message });
                 }
-                message = "Book id is not match with our database.Please give correct book id.";
+                message = "Cart id is not match with our database.Please give correct CartId.";
                 return BadRequest(new { message });
             }
             catch (CustomException)

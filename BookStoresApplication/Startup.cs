@@ -37,11 +37,14 @@ namespace BookStoresApplication
             services.AddTransient<IUserAccountRepository, UserAccountRepository>();
             services.AddTransient<IBookStoreDetailsManager, BookStoreDetailsManager>();
             services.AddTransient<IBookStoreDetailsRepository, BookStoreDetailsRepository>();
+            services.AddTransient<IBookCartManager, BookCartManager>();
+            services.AddTransient<ICartRepository, CartRepository>();
+
             ///****************
             ////Adding the Swagger
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("V1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "BookStoreApplication", Version = "V1" });
+                options.SwaggerDoc("V1", new Info { Title = "BookStoreApplication", Version = "V1" });
 
                 //// this service handles the jwt token suppying in headers
                 options.AddSecurityDefinition("oauth2", new ApiKeyScheme
@@ -82,14 +85,11 @@ namespace BookStoresApplication
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/V1/Swagger.json", "BookStoreApplication v1");
-                c.RoutePrefix = "";
-            });
-            
-            app.UseStaticFiles();
+                //c.RoutePrefix = "";
+            }); 
             app.UseAuthentication();
-            app.UseDefaultFiles();
             app.UseHttpsRedirection();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc();
         }
     }
 }
