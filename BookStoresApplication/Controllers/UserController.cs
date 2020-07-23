@@ -90,10 +90,10 @@ namespace BookStoresApplication.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("ResetPassword")]
-        public IActionResult ResetPassword(string email)
+        public IActionResult ResetPassword(string email,string password)
         {
             string message;
-            var result = this.manager.ResetPassword(email);
+            var result = this.manager.ResetPassword(email,password);
             try
             {
                 if (!result.Equals(null))

@@ -46,19 +46,18 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
-        public object ResetPassword(string email)
+        public object ResetPassword(string email,string password)
         {
-            UserLogin user = new UserLogin();
+           // UserLogin user = new UserLogin();
            try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     SqlCommand cmd = new SqlCommand("spResetPassword", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    con.Open();
                     cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    con.Open();
                     int i = cmd.ExecuteNonQuery();
                     con.Close();
                     return "reset password done successfully.";

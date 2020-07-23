@@ -26,6 +26,6 @@ namespace BookStoreManagerLayer.IBookStoreManager
         /// </summary>
         /// <param name="userReset"></param>
         /// <returns></returns>
-        object ResetPassword(string email);
+        object ResetPassword(string email,string password);
     }
 }

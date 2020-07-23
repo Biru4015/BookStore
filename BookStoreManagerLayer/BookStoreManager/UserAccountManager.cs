@@ -21,9 +21,9 @@ namespace BookStoreManagerLayer.BookStoreManager
             return this.userAccountRepository.AddUserDetails(user);
         }
 
-        public object ResetPassword(string email)
+        public object ResetPassword(string email,string password)
         {
-            return this.userAccountRepository.ResetPassword(email);
+            return this.userAccountRepository.ResetPassword(email,password);
         }
 
         public UserLogin Login(UserLogin login)

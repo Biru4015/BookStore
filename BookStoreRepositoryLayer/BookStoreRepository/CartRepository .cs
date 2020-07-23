@@ -25,11 +25,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("AddToCart", connection);
+                    SqlCommand command = new SqlCommand("spAddToCart", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@BookId", cartModel.BookId);
-                    command.Parameters.AddWithValue("@selectBookCount", cartModel.SelectBookQuantity);
-                    command.Parameters.AddWithValue("@UserEmail", cartModel.Email);
+                    command.Parameters.AddWithValue("@SelectBookQuantity", cartModel.SelectBookQuantity);
+                    command.Parameters.AddWithValue("@Email", cartModel.Email);
                     connection.Open();
                     command.ExecuteNonQuery();
                     connection.Close();
@@ -48,7 +48,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spSelectBookId", connection);
+                    SqlCommand cmd = new SqlCommand("spSelectCartId", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CartId", cartId);
                     connection.Open();
@@ -96,7 +96,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                         cart.BookName = sqlreader["BookName"].ToString();
                         cart.AuthorName = sqlreader["AuthorName"].ToString();
                         cart.Price = Convert.ToDouble(sqlreader["Price"]);
-                        cart.Quantity = Convert.ToInt32(sqlreader["Quantity"]);
+                        //cart.Quantity = Convert.ToInt32(sqlreader["Quantity"]);
                         cart.Catagory = sqlreader["Catagory"].ToString();
                         cart.BookImage = sqlreader["BookImage"].ToString();
                         cart.Rating = Convert.ToDouble(sqlreader["Rating"]);
