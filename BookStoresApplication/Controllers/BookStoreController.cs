@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace BookStoresApplication.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class BookStoreController : ControllerBase
@@ -70,7 +71,7 @@ namespace BookStoresApplication.Controllers
         }
 
         [HttpGet]
-        [Route("SearchBookByBookId")]
+        [Route("SearchBookByBookId/{bookId}")]
         public IActionResult GetBookDetailsByBookId(int bookId)
         {
             string message;

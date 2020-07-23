@@ -11,7 +11,7 @@ namespace BookStoreModelLayer
         /// </summary>
         public enum ExceptionType
         {
-            INVALID_INPUT, OPTIONS_NOT_MATCH
+            INVALID_INPUT, OPTIONS_NOT_MATCH, NULL_EXCEPTION
         }
         public ExceptionType type;
 

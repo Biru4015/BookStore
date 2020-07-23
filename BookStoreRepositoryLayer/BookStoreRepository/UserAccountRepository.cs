@@ -1,4 +1,5 @@
-﻿using BookStoreModelLayer.AccountModel;
+﻿using BookStoreModelLayer;
+using BookStoreModelLayer.AccountModel;
 using BookStoreRepositoryLayer.IBookStoreRepository;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -21,60 +22,81 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
 
         public object AddUserDetails(UserRegistration user)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand cmd = new SqlCommand("spAddUserDetails", con);
-                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("spAddUserDetails", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", user.LastName);
-                cmd.Parameters.AddWithValue("@Email", user.Email);
-                cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", user.LastName);
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
 
-                con.Open();
-                int i = cmd.ExecuteNonQuery();
-                con.Close();
-                return "registration done successfully.";
+                    con.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    con.Close();
+                    return "registration done successfully.";
+                }
+            }
+            catch (CustomException exception)
+            {
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, exception.Message);
             }
         }
 
         public object ResetPassword(string email)
         {
             UserLogin user = new UserLogin();
-            using (SqlConnection con = new SqlConnection(connectionString))
+           try
             {
-                SqlCommand cmd = new SqlCommand("spResetPassword", con);
-                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("spResetPassword", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                con.Open();
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Password", user.Password);
-                int i = cmd.ExecuteNonQuery();
-                con.Close();
-                return "reset password done successfully.";
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    int i = cmd.ExecuteNonQuery();
+                    con.Close();
+                    return "reset password done successfully.";
+                }
+            }
+            catch (CustomException exception)
+            {
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, exception.Message);
             }
         }
 
         public UserLogin Login(UserLogin login)
         {
-            using (SqlConnection con = new SqlConnection(this.connectionString))
+            try
             {
-                
-                SqlCommand cmd = new SqlCommand("spLogin", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Email", login.Email);
-                cmd.Parameters.AddWithValue("@Password", login.Password);
-                con.Open();
-                using (SqlDataReader sdr = cmd.ExecuteReader())
+                using (SqlConnection con = new SqlConnection(this.connectionString))
                 {
-                    if (sdr.HasRows)
+
+                    SqlCommand cmd = new SqlCommand("spLogin", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Email", login.Email);
+                    cmd.Parameters.AddWithValue("@Password", login.Password);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
-                        con.Close();
-                        return login;
+                        if (sdr.HasRows)
+                        {
+                            con.Close();
+                            return login;
+                        }
                     }
+                    con.Close();
+                    return null;
                 }
-                con.Close();
-                return null;
+            }
+            catch (CustomException exception)
+            {
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, exception.Message);
             }
         }
     }
