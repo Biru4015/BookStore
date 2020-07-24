@@ -5,6 +5,9 @@ using System.Text;
 
 namespace BookStoreRepositoryLayer.IBookStoreRepository
 {
+    /// <summary>
+    /// This interface contains the user account details.
+    /// </summary>
     public interface IUserAccountRepository
     {
         /// <summary>

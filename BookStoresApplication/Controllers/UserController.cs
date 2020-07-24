@@ -15,6 +15,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace BookStoresApplication.Controllers
 {
+    /// <summary>
+    /// This is controller class for user account.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase

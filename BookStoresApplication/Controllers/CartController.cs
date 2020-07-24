@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace BookStoresApplication.Controllers
 {
+    /// <summary>
+    /// This is controller class for cart details.
+    /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -25,6 +28,12 @@ namespace BookStoresApplication.Controllers
             this.config = config;
             this.manager = manager;
         }
+
+        /// <summary>
+        /// This method is adding cart details.
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult AddCartDetails(Cart cart)
         {
@@ -46,6 +55,11 @@ namespace BookStoresApplication.Controllers
             }
         }
 
+        /// <summary>
+        /// This method is getting books details from cart.
+        /// </summary>
+        /// <param name="Email"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetAllBooksFromCart(string Email)
         {
@@ -67,6 +81,11 @@ namespace BookStoresApplication.Controllers
             }
         }
 
+        /// <summary>
+        /// This method is deleting cart details by taking cart Id.
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <returns></returns>
         [HttpDelete]
         public IActionResult DeleteCartDetailsByCartId(int cartId)
         {

@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace BookStoresApplication.Controllers
 {
+    /// <summary>
+    /// This is Book Store controller.
+    /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -25,8 +28,12 @@ namespace BookStoresApplication.Controllers
             this.config = config;
             this.manager = manager;
         }
-
-       
+        
+        /// <summary>
+        /// This method is adding book details.
+        /// </summary>
+        /// <param name="booksDetail"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult AddBookDetails(BooksDetail booksDetail)
         {
@@ -48,7 +55,10 @@ namespace BookStoresApplication.Controllers
             }
         }
 
-       
+        /// <summary>
+        /// This method  is getting all book details from database.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetAllBooksDetails()
         {
@@ -70,6 +80,11 @@ namespace BookStoresApplication.Controllers
             }
         }
 
+        /// <summary>
+        /// This method  is getting book details of gievn bookId from database.
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("SearchBookByBookId/{bookId}")]
         public IActionResult GetBookDetailsByBookId(int bookId)
@@ -92,6 +107,11 @@ namespace BookStoresApplication.Controllers
             }
         }
 
+        /// <summary>
+        /// This method  is deleting book details of  given book id.
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
         [HttpDelete]
         public IActionResult DeleteBookDetailsByBookId(int bookId)
         {
