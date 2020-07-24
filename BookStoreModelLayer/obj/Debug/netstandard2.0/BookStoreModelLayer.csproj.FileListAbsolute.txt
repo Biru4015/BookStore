@@ -15,3 +15,4 @@ C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\o
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.AssemblyInfo.cs
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.dll
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.pdb
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.csprojAssemblyReference.cache

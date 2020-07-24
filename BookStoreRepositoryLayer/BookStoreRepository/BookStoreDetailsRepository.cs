@@ -15,7 +15,6 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
     /// </summary>
     public class BookStoreDetailsRepository : IBookStoreDetailsRepository
     {
-        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BookStore;Trusted_Connection=True";
         private readonly IConfiguration configuration;
         public BookStoreDetailsRepository(IConfiguration configuration)
         {
@@ -31,7 +30,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlConnection con = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand cmd = new SqlCommand("spAddBooksDetail", con);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -48,7 +47,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                     con.Open();
                     int i = cmd.ExecuteNonQuery();
                     con.Close();
-                    return "successfully added book details.";
+                    return true;
                 }
             }
             catch (CustomException exception)
@@ -66,7 +65,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
            try
             {
                 List<BooksDetail> bookstorelist = new List<BooksDetail>();
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand command = new SqlCommand("spGetAllBookDetails", connection);
                     command.CommandType = CommandType.StoredProcedure;
@@ -105,7 +104,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             try
             {
                 List<BooksDetail> bookstorelist = new List<BooksDetail>();
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand command = new SqlCommand("spGetBookDetailsByBookId", connection);
                     command.CommandType = CommandType.StoredProcedure;
@@ -146,7 +145,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
            try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand cmd = new SqlCommand("spSelectBookId", connection);
                     cmd.CommandType = CommandType.StoredProcedure;

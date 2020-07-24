@@ -45,10 +45,10 @@ namespace BookStoresApplication.Controllers
             {
                 if (!result.Equals(null))
                 {
-                    message = "Successful";
+                    message = "Successfully added user details in database.";
                     return this.Ok(new { message, result });
                 }
-                message = "Details adding can't be possible";
+                message = "Please give proper user details and try again!!";
                 return BadRequest(new { message });
             }
             catch (CustomException)
@@ -74,7 +74,7 @@ namespace BookStoresApplication.Controllers
                 {
 
                     jsonToken = GenerateToken(result , "User");
-                    message = "Successful";
+                    message = "Login done successfully.";
                     return this.Ok(new { message, result,jsonToken });
                 }
                 message = "Please check email and password and try again!!";
@@ -101,7 +101,7 @@ namespace BookStoresApplication.Controllers
             {
                 if (!result.Equals(null))
                 {
-                    message = "Successful";
+                    message = "Password has been changed successfully.";
                     return this.Ok(new { message, result });
                 }
                 message = "Resetting the password can't be done,something went wrong.";

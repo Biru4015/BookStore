@@ -5,6 +5,9 @@ using System.Text;
 
 namespace BookStoreManagerLayer.IBookStoreManager
 {
+    /// <summary>
+    /// This is manager interface of book store details.
+    /// </summary>
     public interface IBookStoreDetailsManager
     {
         object AddBookDetails(BooksDetail booksDetail);

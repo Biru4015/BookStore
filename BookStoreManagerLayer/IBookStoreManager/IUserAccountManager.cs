@@ -5,6 +5,9 @@ using System.Text;
 
 namespace BookStoreManagerLayer.IBookStoreManager
 {
+    /// <summary>
+    /// This is manager interface for user account.
+    /// </summary>
     public interface IUserAccountManager
     {
         /// <summary>

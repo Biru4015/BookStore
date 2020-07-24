@@ -15,8 +15,6 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
     /// </summary>
     public class UserAccountRepository : IUserAccountRepository
     {
-        
-        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BookStore;Trusted_Connection=True";
         private readonly IConfiguration configuration;
         public UserAccountRepository(IConfiguration configuration)
         {
@@ -32,7 +30,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlConnection con = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand cmd = new SqlCommand("spAddUserDetails", con);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -64,7 +62,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
            try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlConnection con = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand cmd = new SqlCommand("spResetPassword", con);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -91,7 +89,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(this.connectionString))
+                using (SqlConnection con = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
 
                     SqlCommand cmd = new SqlCommand("spLogin", con);

@@ -15,7 +15,6 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
     /// </summary>
     public class CartRepository : ICartRepository
     {
-        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BookStore;Trusted_Connection=True";
         private readonly IConfiguration configuration;
         public CartRepository(IConfiguration configuration)
         {
@@ -31,7 +30,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand command = new SqlCommand("spAddToCart", connection);
                     command.CommandType = CommandType.StoredProcedure;
@@ -59,7 +58,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
            try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand cmd = new SqlCommand("spSelectCartId", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -98,7 +97,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             try
             {
                 List<CartBookJoinModel> cartlist = new List<CartBookJoinModel>();
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
                 {
                     SqlCommand command = new SqlCommand("spGetAllBookFromCart", connection);
                     command.CommandType = CommandType.StoredProcedure;

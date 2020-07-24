@@ -21,11 +21,9 @@ namespace BookStoresApplication.Controllers
     public class CartController : ControllerBase
     {
         public IBookCartManager manager;
-        private readonly IConfiguration config;
 
-        public CartController(IBookCartManager manager, IConfiguration config)
+        public CartController(IBookCartManager manager)
         {
-            this.config = config;
             this.manager = manager;
         }
 
@@ -43,10 +41,10 @@ namespace BookStoresApplication.Controllers
             {
                 if (!result.Equals(null))
                 {
-                    message = "Successful";
+                    message = "Successfully added cart details in database.";
                     return this.Ok(new { message, result });
                 }
-                message = "Details adding can't be possible";
+                message = "Please given correct cart details and try again....!!";
                 return BadRequest(new { message });
             }
             catch (CustomException)
@@ -69,7 +67,7 @@ namespace BookStoresApplication.Controllers
             {
                 if (!result.Equals(null))
                 {
-                    message = "Successful";
+                    message = "Successfully shown all book details  in cart of given email.";
                     return this.Ok(new { message, result });
                 }
                 message = "Please enter correct email,and retry!!";
@@ -94,7 +92,7 @@ namespace BookStoresApplication.Controllers
             {
                 if (this.manager.DeleteCartDetailsByCartId(cartId))
                 {
-                    message = "Successful";
+                    message = "Successfully deleted cart deatils of given cartId";
                     return this.Ok(new { message });
                 }
                 message = "Cart id is not match with our database.Please give correct CartId.";

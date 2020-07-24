@@ -21,11 +21,9 @@ namespace BookStoresApplication.Controllers
     public class BookStoreController : ControllerBase
     {
         public IBookStoreDetailsManager manager;
-        private readonly IConfiguration config;
 
-        public BookStoreController(IBookStoreDetailsManager manager, IConfiguration config)
+        public BookStoreController(IBookStoreDetailsManager manager)
         {
-            this.config = config;
             this.manager = manager;
         }
         
@@ -43,10 +41,10 @@ namespace BookStoresApplication.Controllers
             {
                 if (!result.Equals(null))
                 {
-                    message = "Successful";
+                    message = "Book details added successfully.";
                     return this.Ok(new { message, result });
                 }
-                message = "Details adding can't be possible";
+                message = "Please insert correct book details.!!";
                 return BadRequest(new { message });
             }
             catch (CustomException)
@@ -68,7 +66,7 @@ namespace BookStoresApplication.Controllers
             {
                 if (!result.Equals(null))
                 {
-                    message = "Successful";
+                    message = "All books are shown....";
                     return this.Ok(new { message, result });
                 }
                 message = "Something went wrong please try again!!";
@@ -95,7 +93,7 @@ namespace BookStoresApplication.Controllers
             {
                 if (result !=null)
                 {
-                    message = "Successful";
+                    message = "The book details of given bookId is..";
                     return this.Ok(new { message, result });
                 }
                 message = "Book id is not match with our database.Please give correct book id.";
@@ -120,7 +118,7 @@ namespace BookStoresApplication.Controllers
             {
                 if (this.manager.DeleteBookDetailsByBookId(bookId))
                 {
-                    message = "Successful";
+                    message = "Successfully deleted book details of given bookId.";
                     return this.Ok(new { message});
                 }
                 message = "Book id is not match with our database.Please give correct book id.";
