@@ -96,7 +96,6 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                         cart.BookName = sqlreader["BookName"].ToString();
                         cart.AuthorName = sqlreader["AuthorName"].ToString();
                         cart.Price = Convert.ToDouble(sqlreader["Price"]);
-                        //cart.Quantity = Convert.ToInt32(sqlreader["Quantity"]);
                         cart.Catagory = sqlreader["Catagory"].ToString();
                         cart.BookImage = sqlreader["BookImage"].ToString();
                         cart.Rating = Convert.ToDouble(sqlreader["Rating"]);
