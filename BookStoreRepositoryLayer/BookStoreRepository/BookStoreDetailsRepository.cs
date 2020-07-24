@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BookStoreRepositoryLayer.BookStoreRepository
 {
+    /// <summary>
+    /// This class contains code for book details repository.
+    /// </summary>
     public class BookStoreDetailsRepository : IBookStoreDetailsRepository
     {
         string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BookStore;Trusted_Connection=True";
@@ -18,6 +21,12 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
         {
             this.configuration = configuration;
         }
+        
+        /// <summary>
+        /// This method is created for adding book details.
+        /// </summary>
+        /// <param name="booksDetail"></param>
+        /// <returns></returns>
         public object AddBookDetails(BooksDetail booksDetail)
         {
             try
@@ -48,6 +57,10 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method  is created for getting all books details.
+        /// </summary>
+        /// <returns></returns>
         public List<BooksDetail> GetAllBooksDetails()
         {
            try
@@ -82,6 +95,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method  is created for getting book details of given book id.
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
         public object GetBookDetailsByBookId(int bookId)
         {
             try
@@ -119,6 +137,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method  is created for deleting book details by bookId.
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
         public bool DeleteBookDetailsByBookId(int bookId)
         {
            try

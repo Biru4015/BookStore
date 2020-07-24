@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BookStoreRepositoryLayer.BookStoreRepository
 {
+    /// <summary>
+    /// This class contains repository part of user account details and login
+    /// </summary>
     public class UserAccountRepository : IUserAccountRepository
     {
         
@@ -20,6 +23,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             this.configuration = configuration;
         }
 
+        /// <summary>
+        /// This method is created for adding user details.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public object AddUserDetails(UserRegistration user)
         {
             try
@@ -46,9 +54,14 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method is created for reset pasword of users.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public object ResetPassword(string email,string password)
         {
-           // UserLogin user = new UserLogin();
            try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -69,6 +82,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method is created for login user.
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public UserLogin Login(UserLogin login)
         {
             try

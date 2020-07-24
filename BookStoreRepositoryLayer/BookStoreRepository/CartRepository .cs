@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BookStoreRepositoryLayer.BookStoreRepository
 {
+    /// <summary>
+    /// This  class contains the code for repository part of cart.
+    /// </summary>
     public class CartRepository : ICartRepository
     {
         string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BookStore;Trusted_Connection=True";
@@ -19,6 +22,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             this.configuration = configuration;
         }
 
+        /// <summary>
+        /// This method  is created for adding cart details .
+        /// </summary>
+        /// <param name="cartModel"></param>
+        /// <returns></returns>
         public object AddCartDetails(Cart cartModel)
         {
             try
@@ -42,6 +50,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method is created for deleting cart details by cart Id.
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <returns></returns>
         public bool DeleteCartDetailsByCartId(int cartId)
         {
            try
@@ -75,6 +88,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method is created for getting all book details from cart.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public List<CartBookJoinModel> GetAllBooksFromCart(string email)
         {
             try
