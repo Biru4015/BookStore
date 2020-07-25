@@ -39,6 +39,8 @@ namespace BookStoresApplication
             services.AddTransient<IBookStoreDetailsRepository, BookStoreDetailsRepository>();
             services.AddTransient<IBookCartManager, BookCartManager>();
             services.AddTransient<ICartRepository, CartRepository>();
+            services.AddTransient<IWishListManager, WishListManager>();
+            services.AddTransient<IWishListRepository, WishListRepository>();
 
             ///****************
             ////Adding the Swagger

@@ -34,8 +34,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                 {
                     SqlCommand cmd = new SqlCommand("spAddBooksDetail", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@BookId", booksDetail.BookId);
+                   // cmd.Parameters.AddWithValue("@BookId", booksDetail.BookId);
                     cmd.Parameters.AddWithValue("@BookName", booksDetail.BookName);
                     cmd.Parameters.AddWithValue("@AuthorName", booksDetail.AuthorName);
                     cmd.Parameters.AddWithValue("@Price", booksDetail.Price);

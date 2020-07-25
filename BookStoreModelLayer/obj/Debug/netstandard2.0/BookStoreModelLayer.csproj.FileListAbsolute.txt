@@ -10,9 +10,9 @@ C:\Users\Birendra Kumar\source\repos\BookStoreApplication\BookStoreModelLayer\ob
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\bin\Debug\netstandard2.0\BookStoreModelLayer.deps.json
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\bin\Debug\netstandard2.0\BookStoreModelLayer.dll
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\bin\Debug\netstandard2.0\BookStoreModelLayer.pdb
+C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.csprojAssemblyReference.cache
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.csproj.CoreCompileInputs.cache
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.AssemblyInfoInputs.cache
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.AssemblyInfo.cs
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.dll
 C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.pdb
-C:\Users\Birendra Kumar\source\repos\BookStoresApplication\BookStoreModelLayer\obj\Debug\netstandard2.0\BookStoreModelLayer.csprojAssemblyReference.cache
