@@ -39,6 +39,10 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                     cmd.Parameters.AddWithValue("@LastName", user.LastName);
                     cmd.Parameters.AddWithValue("@Email", user.Email);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.Parameters.AddWithValue("@Address", user.Address);
+                    cmd.Parameters.AddWithValue("@City", user.City);
+                    cmd.Parameters.AddWithValue("@PinCode", user.PinCode);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
 
                     con.Open();
                     int i = cmd.ExecuteNonQuery();

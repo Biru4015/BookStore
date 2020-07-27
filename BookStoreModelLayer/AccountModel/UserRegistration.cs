@@ -46,5 +46,25 @@ namespace BookStoreModelLayer.AccountModel
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        /// <summary>
+        /// This is Address of users.
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// This is city
+        /// </summary>
+        public string City { get; set; }
+
+        /// <summary>
+        /// This is pincode of user
+        /// </summary>
+        public int PinCode { get; set; }
+
+        /// <summary>
+        /// This is  phone number of users.
+        /// </summary>
+        public string PhoneNumber { get; set; }
+
     }
 }
