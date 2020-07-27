@@ -30,5 +30,13 @@ namespace BookStoreRepositoryLayer.IBookStoreRepository
         /// <param name="email"></param>
         /// <returns></returns>
         List<CartBookJoinModel> GetAllBooksFromCart(string email);
+
+        /// <summary>
+        /// This method is created for move wishlist to cart.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <param name="WishListId"></param>
+        /// <returns></returns>
+        CartBookJoinModel WishListToCart(int UserId, int WishListId);
     }
 }

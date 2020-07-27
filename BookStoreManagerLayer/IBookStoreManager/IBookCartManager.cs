@@ -15,5 +15,7 @@ namespace BookStoreManagerLayer.IBookStoreManager
         bool DeleteCartDetailsByCartId(int cartId);
         
         List<CartBookJoinModel> GetAllBooksFromCart(string email);
+
+        CartBookJoinModel WishListToCart(int UserId, int WishListId);
     }
 }

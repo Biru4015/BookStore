@@ -30,5 +30,10 @@ namespace BookStoreManagerLayer.BookStoreManager
         {
             return this.cartRepository.GetAllBooksFromCart(Email);
         }
+
+        public CartBookJoinModel WishListToCart(int UserId, int WishListId)
+        {
+            return this.cartRepository.WishListToCart(UserId,WishListId);
+        }
     }
 }
