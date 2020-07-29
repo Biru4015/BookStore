@@ -90,8 +90,8 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                         details.CartId = Convert.ToInt32(reader["CartId"].ToString());
                         details.UserId = Convert.ToInt32(reader["UserId"].ToString());
                         details.BookId = Convert.ToInt32(reader["BookId"].ToString());
-                        details.BookName = reader["Title"].ToString();
-                        details.AuthorName = reader["Author"].ToString();
+                        details.BookName = reader["BookName"].ToString();
+                        details.AuthorName = reader["AuthorName"].ToString();
                         details.Address = reader["Address"].ToString();
                         details.City = reader["City"].ToString();
                         details.PinCode = Convert.ToInt32(reader["PinCode"].ToString());
@@ -127,7 +127,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                 {
                     SqlCommand cmd = new SqlCommand("spSelectUserIdOrderId", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@OrderId", UserId);
+                    cmd.Parameters.AddWithValue("@UserId", UserId);
                     cmd.Parameters.AddWithValue("@OrderId", OrderId);
                     connection.Open();
                     using (SqlDataReader sdr = cmd.ExecuteReader())
@@ -141,11 +141,11 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                             connection.Open();
                             int b = command.ExecuteNonQuery();
                             connection.Close();
-                            return true;
+                            return false;
                         }
                     }
                     connection.Close();
-                    return false;
+                    return true;
                 }
             }
             catch (CustomException exception)
@@ -178,8 +178,8 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                         details.CartId = Convert.ToInt32(reader["CartId"].ToString());
                         details.UserId = Convert.ToInt32(reader["UserId"].ToString());
                         details.BookId = Convert.ToInt32(reader["BookId"].ToString());
-                        details.BookName = reader["Title"].ToString();
-                        details.AuthorName = reader["Author"].ToString();
+                        details.BookName = reader["BookName"].ToString();
+                        details.AuthorName = reader["AuthorName"].ToString();
                         details.Address = reader["Address"].ToString();
                         details.City = reader["City"].ToString();
                         details.PinCode = Convert.ToInt32(reader["PinCode"].ToString());

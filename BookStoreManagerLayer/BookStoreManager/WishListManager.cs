@@ -1,4 +1,5 @@
 ﻿using BookStoreManagerLayer.IBookStoreManager;
+using BookStoreModelLayer.CartModel;
 using BookStoreModelLayer.WishListModel;
 using BookStoreRepositoryLayer.IBookStoreRepository;
 using System;
@@ -29,6 +30,11 @@ namespace BookStoreManagerLayer.BookStoreManager
         public bool DeleteFromWishList(int UserId, int WishListId)
         {
             return this.wishListRepository.DeleteFromWishList(UserId, WishListId);
+        }
+
+        public CartBookJoinModel WishListToCart(int UserId, int WishListId)
+        {
+            return this.wishListRepository.WishListToCart(UserId, WishListId);
         }
     }
 }

@@ -14,7 +14,6 @@ namespace BookStoresApplication.Controllers
     /// <summary>
     /// This controller class is created for Order the books.
     /// </summary>
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase

@@ -127,45 +127,5 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
                 throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, exception.Message);
             }
         }
-
-        /// <summary>
-        /// This method is created for moving wishlist to cart.
-        /// </summary>
-        /// <param name="UserId"></param>
-        /// <param name="WishListId"></param>
-        /// <returns></returns>
-        public CartBookJoinModel WishListToCart(int UserId, int WishListId)
-        {
-            CartBookJoinModel cart = new CartBookJoinModel();
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
-                {
-                    SqlCommand command = new SqlCommand("spWishListToCart", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@UserId", UserId);
-                    command.Parameters.AddWithValue("@WishListId", WishListId);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cart.CartId = Convert.ToInt32(reader["CartId"].ToString());
-                        cart.BookId = Convert.ToInt32(reader["BookId"].ToString());
-                        cart.BookName = reader["BookName"].ToString();
-                        cart.Catagory = reader["Catagory"].ToString();
-                        cart.AuthorName = reader["AuthorName"].ToString();
-                        cart.BookImage = reader["BookImage"].ToString();
-                        cart.Price = Convert.ToDouble(reader["Price"].ToString());
-                        cart.Quantity = Convert.ToInt32(reader["Quantity"].ToString());
-                        cart.Rating = Convert.ToDouble(reader["Rating"].ToString());
-                    }
-                }
-                return cart;
-            }
-            catch (CustomException exception)
-            {
-                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, exception.Message);
-            }
-        }
     }
 }

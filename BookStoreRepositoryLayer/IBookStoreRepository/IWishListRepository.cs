@@ -1,4 +1,5 @@
-﻿using BookStoreModelLayer.WishListModel;
+﻿using BookStoreModelLayer.CartModel;
+using BookStoreModelLayer.WishListModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,5 +31,13 @@ namespace BookStoreRepositoryLayer.IBookStoreRepository
         /// <param name="WishListId"></param>
         /// <returns></returns>
         bool DeleteFromWishList(int UserId, int WishListId);
+
+        /// <summary>
+        /// This method is created for move wishlist to cart.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <param name="WishListId"></param>
+        /// <returns></returns>
+        CartBookJoinModel WishListToCart(int UserId, int WishListId);
     }
 }

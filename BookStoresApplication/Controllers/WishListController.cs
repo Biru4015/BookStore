@@ -98,5 +98,33 @@ namespace BookStoresApplication.Controllers
                 return BadRequest(CustomException.ExceptionType.OPTIONS_NOT_MATCH);
             }
         }
+
+        /// <summary>
+        /// This method is created for move wishlist to cart.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <param name="WishListId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("WishListToCart/{WishListId}")]
+        public IActionResult WishListToCart(int UserId, int WishListId)
+        {
+            string message;
+            var result = this.manager.WishListToCart(UserId, WishListId);
+            try
+            {
+                if (!result.Equals(null))
+                {
+                    message = "Successfully moved wishlist to cart.";
+                    return this.Ok(new { message, result });
+                }
+                message = "Please given correct userid and wishlistid details and try again....!!";
+                return BadRequest(new { message });
+            }
+            catch (CustomException)
+            {
+                return BadRequest(CustomException.ExceptionType.INVALID_INPUT);
+            }
+        }
     }
 }
