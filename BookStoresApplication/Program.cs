@@ -14,6 +14,8 @@ namespace BookStoresApplication
     {
         public static void Main(string[] args)
         {
+            MSMQ message = new MSMQ();
+            string value = message.ReceiveMessage();
             CreateWebHostBuilder(args).Build().Run();
         }
 

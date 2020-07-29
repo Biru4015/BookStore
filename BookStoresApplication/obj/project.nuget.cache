@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yBI20i9V1phMefNeF99Of2CbaE9vG2FXBY8VtnXv19nSGxZ1DwSipSRnD4v6GXVZ765cYUkM+ZxpnNVtoLJTGw==",
+  "dgSpecHash": "ooUHrhC/JPoU3LOms3j2fLN0EKzEEiCX0GVmoQqSQnqovY4zc/xEH9XKffcfOxc3aIc59/DF3XcKEnFPyM3cIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Birendra Kumar\\source\\repos\\BookStoresApplication\\BookStoresApplication\\BookStoresApplication.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Birendra Kumar\\.nuget\\packages\\experimental.system.messaging\\1.1.0\\experimental.system.messaging.1.1.0.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
     "C:\\Users\\Birendra Kumar\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.1\\microsoft.aspnetcore.antiforgery.2.1.1.nupkg.sha512",

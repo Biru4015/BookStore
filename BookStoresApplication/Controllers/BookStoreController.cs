@@ -26,7 +26,9 @@ namespace BookStoresApplication.Controllers
         {
             this.manager = manager;
         }
-        
+
+        MSMQ msmq = new MSMQ();
+
         /// <summary>
         /// This method is adding book details.
         /// </summary>
@@ -42,6 +44,7 @@ namespace BookStoresApplication.Controllers
                 if (!result.Equals(null))
                 {
                     message = "Book details added successfully.";
+                    msmq.SendMessage("Books name " + booksDetail.BookName + " added successfully.", result);
                     return this.Ok(new { message, result });
                 }
                 message = "Please insert correct book details.!!";
