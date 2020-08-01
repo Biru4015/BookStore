@@ -1,10 +1,13 @@
 ﻿using BookStoreModelLayer;
 using BookStoreModelLayer.OrderModel;
+using Experimental.System.Messaging;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 
 namespace BookStoreRepositoryLayer.BookStoreRepository
@@ -154,6 +157,16 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             }
         }
 
+        /// <summary>
+        /// This method is created for differents address for order place.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <param name="BookId"></param>
+        /// <param name="CartId"></param>
+        /// <param name="Address"></param>
+        /// <param name="City"></param>
+        /// <param name="PinCode"></param>
+        /// <returns></returns>
         public OrderInformation PlaceOrderDiffrentAddress(int UserId,int BookId, int CartId, string Address, string City, int PinCode)
         {
             OrderInformation details = new OrderInformation();
@@ -197,6 +210,106 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             {
                 throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, exception.Message);
             }
+        }
+
+        /// <summary>
+        /// This method is created for Sendind mail to user.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <param name="ordernumber"></param>
+        /// <returns></returns>
+        public bool EmailOrderNumber(int UserId, int ordernumber)
+        {
+            string Email = GetEmailId(UserId);
+            string messagecontent = "your order has been placed.Thanks for shopping with us your order number is  " + ordernumber + " keep it for future reference";
+
+            //// for sending message in MSMQ
+            MessageQueue msgqueue;
+            if (MessageQueue.Exists(@".\Private$\MyQueue"))
+            {
+                msgqueue = new MessageQueue(@".\Private$\MyQueue");
+            }
+            else
+            {
+                msgqueue = MessageQueue.Create(@".\Private$\MyQueue");
+            }
+
+            Message message = new Message();
+
+            message.Formatter = new BinaryMessageFormatter();
+            message.Body = messagecontent;
+            msgqueue.Label = "your order number";
+            msgqueue.Send(message);
+
+            //// for reading message from MSMQ
+            var receivequeue = new MessageQueue(@".\Private$\MyQueue");
+            var receivemsg = receivequeue.Receive();
+            receivemsg.Formatter = new BinaryMessageFormatter();
+
+            string linktobesend = receivemsg.Body.ToString();
+            if (Sendmail(Email, linktobesend))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// This method is created for send mail
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private bool Sendmail(string email, string message)
+        {
+
+            MailMessage mailmessage = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+            mailmessage.From = new MailAddress("rambirendra12@gmail.com");
+            mailmessage.To.Add(new MailAddress(email));
+            mailmessage.Subject = "Order Confirmation";
+            mailmessage.IsBodyHtml = true;
+            mailmessage.Body = message;
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com";
+            smtp.Credentials = new NetworkCredential("rambirendra12@gmail.com", "Binidid123");
+            smtp.EnableSsl = true;
+            smtp.Send(mailmessage);
+            return true;
+        }
+
+        /// <summary>
+        /// This method is created for fetching email from database using userid.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        private string GetEmailId(int UserId)
+        {
+            string email = string.Empty;
+            try
+            {
+
+                using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("UserDbConnection")))
+                {
+                    SqlCommand cmd = new SqlCommand("GetEmail", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserId", UserId);
+                    connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    { 
+                        email = reader["Email"].ToString();
+                    }
+                    connection.Close();
+                    return email;
+                }
+            }
+            catch (CustomException exception)
+            {
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, exception.Message);
+            }
+
         }
     }
 }

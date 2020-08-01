@@ -5028,6 +5028,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "BookStoreModelLayer": "1.0.0",
+          "Experimental.System.Messaging": "1.1.0",
           "Microsoft.EntityFrameworkCore": "2.1.1",
           "Microsoft.EntityFrameworkCore.Relational": "2.1.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.1",

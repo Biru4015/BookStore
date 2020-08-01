@@ -116,7 +116,7 @@ namespace BookStoresApplication.Controllers
                 if (!result.Equals(null))
                 {
                     message = "Successfully moved wishlist to cart.";
-                    return this.Ok(new { message, result });
+                    return this.Ok(new { message});
                 }
                 message = "Please given correct userid and wishlistid details and try again....!!";
                 return BadRequest(new { message });

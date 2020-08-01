@@ -40,5 +40,7 @@ namespace BookStoreManagerLayer.IBookStoreManager
         /// <param name="OrderId"></param>
         /// <returns></returns>
         bool CancelOrder(int UserId, int OrderId);
+
+        bool EmailOrderNumber(int UserId, int ordernumber);
     }
 }

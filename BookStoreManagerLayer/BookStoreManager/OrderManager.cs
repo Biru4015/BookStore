@@ -35,5 +35,10 @@ namespace BookStoreManagerLayer.BookStoreManager
         {
             return this.orderRepository.CancelOrder(UserId,OrderId);
         }
+
+        public bool EmailOrderNumber(int UserId, int ordernumber)
+        {
+            return this.orderRepository.EmailOrderNumber(UserId, ordernumber);
+        }
     }
 }

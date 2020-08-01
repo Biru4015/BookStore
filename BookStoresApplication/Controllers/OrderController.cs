@@ -14,6 +14,7 @@ namespace BookStoresApplication.Controllers
     /// <summary>
     /// This controller class is created for Order the books.
     /// </summary>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
@@ -41,6 +42,7 @@ namespace BookStoresApplication.Controllers
                 if (!result.Equals(null))
                 {
                     message = "Successfully placed ordered.";
+                    manager.EmailOrderNumber(UserId, result.OrderId);
                     return this.Ok(new { message, result });
                 }
                 message = "Please given correct order details and try again....!!";
@@ -72,6 +74,7 @@ namespace BookStoresApplication.Controllers
                 if (!result.Equals(null))
                 {
                     message = "Successfully placed ordered in given address details.";
+                    manager.EmailOrderNumber(UserId, result.OrderId);
                     return this.Ok(new { message, result });
                 }
                 message = "Please given correct order details and try again....!!";
