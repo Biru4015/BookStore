@@ -72,6 +72,12 @@ namespace BookStoresApplication
                       ValidAudience = Configuration["JWT:Audience"]
                   };
               });
+
+            services.AddDistributedRedisCache(option=> 
+            {
+                option.Configuration = "localhost:6379";
+                option.InstanceName = "Book";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

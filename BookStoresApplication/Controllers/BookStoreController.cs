@@ -8,7 +8,9 @@ using BookStoreModelLayer.BooksModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace BookStoresApplication.Controllers
 {
@@ -21,10 +23,13 @@ namespace BookStoresApplication.Controllers
     public class BookStoreController : ControllerBase
     {
         public IBookStoreDetailsManager manager;
+        public readonly IDistributedCache _distributedCache;
+        public string key = "book";
 
-        public BookStoreController(IBookStoreDetailsManager manager)
+        public BookStoreController(IBookStoreDetailsManager manager, IDistributedCache distributedCache)
         {
             this.manager = manager;
+            this._distributedCache = distributedCache;
         }
 
         MSMQ msmq = new MSMQ();
@@ -45,6 +50,7 @@ namespace BookStoresApplication.Controllers
                 {
                     message = "Book details added successfully.";
                     msmq.SendMessage("Books name " + booksDetail.BookName + " added successfully.", result);
+                    this._distributedCache.Remove(key);
                     return this.Ok(new { message, result });
                 }
                 message = "Please insert correct book details.!!";
@@ -64,16 +70,26 @@ namespace BookStoresApplication.Controllers
         public IActionResult GetAllBooksDetails()
         {
             string message;
-            var result = this.manager.GetAllBooksDetails();
             try
             {
-                if (!result.Equals(null))
+                var cache = this._distributedCache.GetString(key);
+                if (cache == null)
                 {
-                    message = "All books are shown....";
-                    return this.Ok(new { message, result });
+                    List<BooksDetail> result = this.manager.GetAllBooksDetails();
+                    if (result != null)
+                    {
+                        var jsonmodel = JsonConvert.SerializeObject(result);
+                        this._distributedCache.SetString(key, jsonmodel);
+                        message = "The book details of given bookId is..";
+                        return this.Ok(new { message, result });
+                    }
+                    return NotFound();
                 }
-                message = "Something went wrong please try again!!";
-                return BadRequest(new { message });
+                else
+                {
+                    var model = JsonConvert.DeserializeObject<List<BooksDetail>>(cache);
+                    return Ok(model);
+                }
             }
             catch (CustomException)
             {
@@ -91,16 +107,28 @@ namespace BookStoresApplication.Controllers
         public IActionResult GetBookDetailsByBookId(int bookId)
         {
             string message;
-            var result = this.manager.GetBookDetailsByBookId(bookId);
             try
             {
-                if (result !=null)
+                var key = "book";
+                var cache = this._distributedCache.GetString(key);
+                if (cache == null)
                 {
-                    message = "The book details of given bookId is..";
-                    return this.Ok(new { message, result });
+                    var result = this.manager.GetBookDetailsByBookId(bookId);
+                    if (result!=null)
+                    {
+                        var jsonmodel = JsonConvert.SerializeObject(result);
+                        this._distributedCache.SetString(key, jsonmodel);
+                        message = "The book details of given bookId is..";
+                        return this.Ok(new { message, result }); 
+                    }
+                    return NotFound();
                 }
-                message = "Book id is not match with our database.Please give correct book id.";
-                return BadRequest(new { message });
+                else
+                {
+                    var model = JsonConvert.DeserializeObject<List<BooksDetail>>(cache);
+                    return Ok(model);
+                }
+               
             }
             catch (CustomException)
             {
@@ -116,13 +144,14 @@ namespace BookStoresApplication.Controllers
         [HttpDelete]
         public IActionResult DeleteBookDetailsByBookId(int bookId)
         {
-            string message;  
+            string message;
             try
             {
                 if (this.manager.DeleteBookDetailsByBookId(bookId))
                 {
                     message = "Successfully deleted book details of given bookId.";
-                    return this.Ok(new { message});
+                    this._distributedCache.Remove(key);
+                    return this.Ok(new { message });
                 }
                 message = "Book id is not match with our database.Please give correct book id.";
                 return BadRequest(new { message });

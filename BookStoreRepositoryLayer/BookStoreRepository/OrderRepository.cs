@@ -272,7 +272,7 @@ namespace BookStoreRepositoryLayer.BookStoreRepository
             mailmessage.Body = message;
             smtp.Port = 587;
             smtp.Host = "smtp.gmail.com";
-            smtp.Credentials = new NetworkCredential("rambirendra12@gmail.com", "Binidid123");
+            smtp.Credentials = new NetworkCredential("rambirendra12@gmail.com", "Rama@123");
             smtp.EnableSsl = true;
             smtp.Send(mailmessage);
             return true;
