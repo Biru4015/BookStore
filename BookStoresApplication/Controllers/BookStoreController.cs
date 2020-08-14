@@ -33,7 +33,7 @@ namespace BookStoresApplication.Controllers
         }
 
         MSMQ msmq = new MSMQ();
-
+       
         /// <summary>
         /// This method is adding book details.
         /// </summary>
@@ -107,28 +107,16 @@ namespace BookStoresApplication.Controllers
         public IActionResult GetBookDetailsByBookId(int bookId)
         {
             string message;
+            var result = this.manager.GetBookDetailsByBookId(bookId);
             try
             {
-                var key = "book";
-                var cache = this._distributedCache.GetString(key);
-                if (cache == null)
+                if (!result.Equals(null))
                 {
-                    var result = this.manager.GetBookDetailsByBookId(bookId);
-                    if (result!=null)
-                    {
-                        var jsonmodel = JsonConvert.SerializeObject(result);
-                        this._distributedCache.SetString(key, jsonmodel);
-                        message = "The book details of given bookId is..";
-                        return this.Ok(new { message, result }); 
-                    }
-                    return NotFound();
+                    message = "Successfully shown book of given bookid";
+                    return this.Ok(new { message, result });
                 }
-                else
-                {
-                    var model = JsonConvert.DeserializeObject<List<BooksDetail>>(cache);
-                    return Ok(model);
-                }
-               
+                message = "Please enter correct bookid,and retry!!";
+                return BadRequest(new { message });
             }
             catch (CustomException)
             {

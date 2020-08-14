@@ -5,13 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using BookStoreManagerLayer.BookStoreManager;
 using BookStoreManagerLayer.IBookStoreManager;
+using BookStoreModelLayer.AccountModel;
+using BookStoreRepositoryLayer;
 using BookStoreRepositoryLayer.BookStoreRepository;
 using BookStoreRepositoryLayer.IBookStoreRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -32,6 +36,8 @@ namespace BookStoresApplication
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookDBContext>();
+            services.AddDbContextPool<BookDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<IUserAccountManager, UserAccountManager>();
             services.AddTransient<IUserAccountRepository, UserAccountRepository>();
